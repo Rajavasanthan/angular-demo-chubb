@@ -6,6 +6,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  isRed = true;
   title = 0;
   urls = [
     "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -15,7 +16,61 @@ export class AppComponent {
   ];
   imageURL = this.urls[0];
   result = "";
-  
+  displayAllow = true;
+
+  dataList = [
+    {
+      name : "Person 1",
+      age : 30
+    },
+    {
+      name : "Person 2",
+      age : 20
+    },
+    {
+      name : "Person 2",
+      age : 49
+    },
+    {
+      name : "Person 2",
+      age : 12
+    },
+    {
+      name : "Person 2",
+      age : 78
+    },
+    {
+      name : "Person 2",
+      age : 17
+    },
+    {
+      name : "Person 2",
+      age : 98
+    },
+    {
+      name : "Person 2",
+      age : 23
+    },
+    {
+      name : "Person 2",
+      age : 56
+    },
+    {
+      name : "Person 2",
+      age : 14
+    },
+    {
+      name : "Person 2",
+      age : 67
+    },
+    {
+      name : "Person 2",
+      age : 21
+    },
+  ]
+
+
+
   constructor() {
     // setInterval(() => {
     //   let randomNumber = Math.floor(Math.random() * 4);
@@ -26,5 +81,9 @@ export class AppComponent {
   showAlert() {
     let randomNumber = Math.floor(Math.random() * 4);
     this.imageURL = this.urls[randomNumber];
+  }
+
+  changeColor(){
+    this.isRed = !this.isRed;
   }
 }

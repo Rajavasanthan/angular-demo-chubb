@@ -8,6 +8,12 @@
 
 {{result}} -->
 
+<!-- 
+<h1 [ngClass]="{ 'color-red': isRed, 'color-blue': !isRed }">Hello World</h1>
+<button (click)="changeColor()">Change Color</button>
+
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-3">
@@ -32,4 +38,23 @@
       <app-price-tag title="New Card 4" [url]="urls[3]"></app-price-tag>
     </div>
   </div>
-</div>
+</div> -->
+
+<h1 *ngIf="displayAllow">Hello World</h1>
+
+<ul>
+  <li *ngFor="let myTempVar of dataList">
+    {{ myTempVar.name }} -
+    <span
+      [ngClass]="{
+        'color-red': myTempVar.age > 25,
+        'color-blue': myTempVar.age < 25,
+        strike: myTempVar.age < 15
+      }"
+      >{{ myTempVar.age }}</span
+    >
+  </li>
+</ul>
+
+
+<app-price-tag *ngFor="let myTempVar of dataList" [title]="myTempVar.name" [url]="urls[1]"></app-price-tag>
