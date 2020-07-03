@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PriceTagComponent } from './price-tag/price-tag.component';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PriceTagComponent } from './price-tag/price-tag.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

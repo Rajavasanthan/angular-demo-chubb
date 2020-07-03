@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormBuilder,Validators } from "@angular/forms";
 
 @Component({
   selector: "app-root",
@@ -68,14 +69,38 @@ export class AppComponent {
       age : 21
     },
   ]
+  userForm;
+  userDetails = [];
 
-
-
-  constructor() {
+  constructor(private fb:FormBuilder) {
+    
+      this.userForm = this.fb.group({
+        'name' : this.fb.control('',[Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
+        'age' : this.fb.control('',[Validators.required,Validators.min(18),Validators.max(55)]),
+        'country' : this.fb.control('IN'),
+        'mobile' : this.fb.control('',Validators.required),
+        'address' : this.fb.array([
+          this.fb.group({
+            'street' : this.fb.control('',[Validators.required]),
+            'zipcode' : this.fb.control('')
+          })
+        ])
+      })
+    
+    console.log(this.userForm)
+    
+    
     // setInterval(() => {
     //   let randomNumber = Math.floor(Math.random() * 4);
     //   this.imageURL = this.urls[randomNumber]
     // }, 300);
+  }
+
+  submitForm(){
+   if(this.userForm.valid){
+      console.log(this.userForm.value);
+      this.userDetails.push(this.userForm.value)
+   }
   }
 
   showAlert() {

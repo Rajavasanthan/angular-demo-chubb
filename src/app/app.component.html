@@ -1,4 +1,4 @@
-<!-- <h1>{{title}}</h1>
+<!-- <!-- <h1>{{title}}</h1>
 
 <img [src]="imageURL" alt="">
 
@@ -40,7 +40,7 @@
   </div>
 </div> -->
 
-<h1 *ngIf="displayAllow">Hello World</h1>
+<!-- <h1 *ngIf="displayAllow">Hello World</h1>
 
 <ul>
   <li *ngFor="let myTempVar of dataList">
@@ -57,4 +57,65 @@
 </ul>
 
 
-<app-price-tag *ngFor="let myTempVar of dataList" [title]="myTempVar.name" [url]="urls[1]"></app-price-tag>
+<app-price-tag *ngFor="let myTempVar of dataList" [title]="myTempVar.name" [url]="urls[1]"></app-price-tag> -->
+
+<div class="row">
+  <div class="col-lg-6">
+    
+<form [formGroup]="userForm" (submit)="submitForm()">
+  <label for="username">User Name</label>
+  <input type="text" name="username" formControlName="name" />
+  <span *ngIf="!userForm.get('name').valid && userForm.get('name').dirty">Name should in length between 5 - 20 characters</span>
+  <span *ngIf="userForm.get('name').touched && !userForm.get('name').valid">This field is required</span>
+  <br />
+  <label for="age">Age</label>
+  <input type="number" name="age" formControlName="age" />
+  <br />
+  <label for="country">Country</label>
+  <select name="country" id="" formControlName="country">
+    <option value="IN">India</option>
+    <option value="US">America</option>
+  </select>
+  <br />
+  <label for="">Mobile</label>
+  <input type="number" formControlName="mobile" />
+  <br />
+  <h4>Address</h4>
+  <div formArrayName="address" *ngFor="let address of userForm.get('address')['controls'];let i = index">
+      <div [formGroupName]="i">
+        <label for="">Street</label>
+        <input type="text" formControlName="street">
+        <br>
+        <label for="">Zip Code</label>
+        <input type="text" formControlName="zipcode">
+      </div>
+      <hr>
+  </div>
+  <br>
+  {{userForm.valid}}
+  <br>
+  <input type="submit" value="Submit" />
+</form>
+
+  </div>
+  <div class="col-lg-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userDetails">
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
